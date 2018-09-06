@@ -1,0 +1,25 @@
+#!/bin/bash
+
+EXE=/usr/bin/python3
+EXEARGS="/root/buildv2.py --tasks /root/buildv2_tasks.py" 
+PIDFILE=/var/run/bp-build.pid
+case "$1" in
+  start)
+    echo -n "Starting server: Bus Pirate auto build"
+    /sbin/start-stop-daemon --start --quiet --pidfile $PIDFILE --make-pidfile --background --exec $EXE -- $EXEARGS
+    echo "."
+    ;;
+  stop)
+    echo -n "Stopping server: Bus Pirate auto build"
+    /sbin/start-stop-daemon --stop --quiet --pidfile $PIDFILE
+    echo "."
+    ;;
+  restart)
+    $0 stop
+    $0 start
+    ;;
+  *)
+  echo "Usage: /etc/init.d/bp-build {start|stop|restart}"
+  exit 1
+esac
+exit 0
