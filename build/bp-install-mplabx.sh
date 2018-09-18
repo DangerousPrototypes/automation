@@ -27,7 +27,7 @@ chmod +x mplabxc16linux
 # NOTE: two pairs of dashes -- --mode
 # NOTE: remember the XC16 install directory, it will be needed later (eg '/opt/microchip/xc16/v1.35')
 ./mplabxc16linux -- --mode text
-#<follow instructions given on command line>
+# NOTE: follow instructions to accept the license and install the software
 
 # Install MPLabX IDE (needed generate make files)
 # Download IDE
@@ -45,7 +45,7 @@ chmod +x MPLABX-v5.05-linux-installer.sh
 # NOTE: change name to current version of IDE installer
 # NOTE: two pairs of dashes -- --mode
 ./MPLABX-v5.05-linux-installer.sh -- --mode text
-#<follow instrutions given on command line>
+# NOTE: follow instructions to accept the license and install the software
 
 # Install peripheral library
 # Download library
@@ -58,7 +58,7 @@ chmod +x peripheral-libraries-for-pic24-and-dspic-v2.00-linux-installer.run
 # NOTE: two pairs of dashes -- --mode
 # NOTE: if XC16 installed to a version specific directory it needs to be entered. Example library default install directory is '/opt/microchip/xc16' but our XC16 is installed in '/opt/microchip/xc16/v1.35' by default
 ./peripheral-libraries-for-pic24-and-dspic-v2.00-linux-installer.run -- --mode text
-#<follow instrutions given on command line>
+# NOTE: follow instructions to accept the license and install the software
 
 # Clone Bus Pirate repo
 mkdir picdev &&

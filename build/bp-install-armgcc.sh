@@ -43,7 +43,7 @@ cd bus_pirate_ng
 git clone git://github.com/libopencm3/libopencm3.git 
 
 # Switch to working commit for our project (953bf53) because later versions break compatibility
-cd libopencm3 
+cd bus_pirate_ng/libopencm3 
 git checkout 953bf53
 
 # Build libopencm3 libraries

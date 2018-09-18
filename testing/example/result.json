@@ -1,0 +1,671 @@
+{
+    "hardware": {
+        "version": "3b",
+        "major": "3"
+    },
+    "tests": {
+        "BP_MANUAL": {
+            "timestamp": {
+                "start": 1537089749.1459599,
+                "stop": 1537089875.0469308
+            },
+            "test": {
+                "sBasicScript": [
+                    {
+                        "command": "s",
+                        "result": "1-WIRE>s\r\n1-WIRE(BASIC)>"
+                    }
+                ],
+                "dMeasureADC": [
+                    {
+                        "command": "d",
+                        "result": "1-WIRE>d\r\nVOLTAGE PROBE: 0.00V\r\n1-WIRE>"
+                    }
+                ],
+                "help": [
+                    {
+                        "command": "?",
+                        "result": "HiZ>?\r\nGeneral\t\t\t\t\tProtocol interaction\r\n---------------------------------------------------------------------------\r\n?\tThis help\t\t\t(0)\tList current macros\r\n=X/|X\tConverts X/reverse X\t\t(x)\tMacro x\r\n~\tSelftest\t\t\t[\tStart\r\n#\tReset\t\t\t\t]\tStop\r\n$\tJump to bootloader\t\t{\tStart with read\r\n&/%\tDelay 1 us/ms\t\t\t}\tStop\r\na/A/@\tAUXPIN (low/HI/READ)\t\t\"abc\"\tSend string\r\nb\tSet baudrate\t\t\t123\r\nc/C\tAUX assignment (aux/CS)\t\t0x123\r\nd/D\tMeasure ADC (once/CONT.)\t0b110\tSend value\r\nf\tMeasure frequency\t\tr\tRead\r\ng/S\tGenerate PWM/Servo\t\t/\tCLK hi\r\nh\tCommandhistory\t\t\t\\\tCLK lo\r\ni\tVersioninfo/statusinfo\t\t^\tCLK tick\r\nl/L\tBitorder (msb/LSB)\t\t-\tDAT hi\r\nm\tChange mode\t\t\t_\tDAT lo\r\no\tSet output type\t\t\t.\tDAT read\r\np/P\tPullup resistors (off/ON)\t!\tBit read\r\ns\tScript engine\t\t\t:\tRepeat e.g. r:10\r\nv\tShow volts/states\t\t.\tBits to read/write e.g. 0x55.2\r\nw/W\tPSU (off/ON)\t\t<x>/<x= >/<0>\tUsermacro x/assign x/list all\r\nHiZ>"
+                    }
+                ],
+                "sServoOneLine": [
+                    {
+                        "command": "S 90 %:500 S 180",
+                        "result": "1-WIRE>S 90 %:500 S 180\r\nServo active\r\nDELAY 500ms\r\nPWM disabled\r\nServo active\r\n1-WIRE>"
+                    }
+                ],
+                "partialReadWrite4": [
+                    {
+                        "command": "0xaa;4",
+                        "result": "2WIRE>0xaa;4\r\nWRITE: 0x0A;4 \r\n2WIRE>"
+                    }
+                ],
+                "hardwareInfo": [
+                    {
+                        "command": "i",
+                        "result": "HiZ>i\r\nBus Pirate v3b\r\nFirmware v5.10 (r559)  Bootloader v4.4\r\nDEVID:0x0447 REVID:0x3046 (24FJ64GA002 B8)\r\nhttp://dangerousprototypes.com\r\nHiZ>"
+                    }
+                ],
+                "setupResume1Wire": [
+                    {
+                        "command": "m 2",
+                        "result": "2WIRE>m 2\r\n1WIRE routines (C) 2000 Michael Pearce GNU GPL\r\nReady\r\n1-WIRE>"
+                    }
+                ],
+                "aAuxPin": [
+                    {
+                        "command": "A",
+                        "result": "1-WIRE>A\r\nAUX HIGH\r\n1-WIRE>"
+                    },
+                    {
+                        "command": "a",
+                        "result": "1-WIRE>a\r\nAUX LOW\r\n1-WIRE>"
+                    },
+                    {
+                        "command": "@",
+                        "result": "1-WIRE>@\r\nAUX INPUT/HI-Z, READ: 0\r\n1-WIRE>"
+                    }
+                ],
+                "oOutputDemo": [
+                    {
+                        "command": "o",
+                        "result": "SPI>o\r\n 1. HEX\r\n 2. DEC\r\n 3. BIN\r\n 4. RAW\r\n\r\n(1)>"
+                    },
+                    {
+                        "command": "1",
+                        "result": "(1)>1\r\nDisplay format set\r\nSPI>"
+                    },
+                    {
+                        "command": "0b1 1 0x1",
+                        "result": "SPI>0b1 1 0x1\r\nWRITE: 0x01 \r\nWRITE: 0x01 \r\nWRITE: 0x01 \r\nSPI>"
+                    }
+                ],
+                "spacecommaSPI": [
+                    {
+                        "command": "[1 2,3rr]",
+                        "result": "SPI>[1 2,3rr]\r\n/CS ENABLED\r\nWRITE: 0x01 \r\nWRITE: 0x02 \r\nWRITE: 0x03 \r\nREAD: 0x00 \r\nREAD: 0x00 \r\n/CS DISABLED\r\nSPI>"
+                    }
+                ],
+                "oDataDisplayFormat": [
+                    {
+                        "command": "o",
+                        "result": "HiZ>o\r\n 1. HEX\r\n 2. DEC\r\n 3. BIN\r\n 4. RAW\r\n\r\n(1)>"
+                    },
+                    {
+                        "command": "1",
+                        "result": "(1)>1\r\nDisplay format set\r\nHiZ>"
+                    }
+                ],
+                "userMacroList": [
+                    {
+                        "command": "<0>",
+                        "result": "I2C><0>\r\n1. <[0xa1 r:8]>\r\n2. <>\r\n3. <>\r\n4. <>\r\n5. <>\r\nI2C>"
+                    }
+                ],
+                "busWrite": [
+                    {
+                        "command": "0b1001",
+                        "result": "I2C>0b1001\r\nWRITE: 0x09 ACK  ACK \r\nI2C>"
+                    },
+                    {
+                        "command": "0b1001:2",
+                        "result": "I2C>0b1001:2\r\nWRITE: 0x09 ACK 0x09 ACK \r\nI2C>"
+                    }
+                ],
+                "setup2WireBitwise": [
+                    {
+                        "command": "m 6 1 2 1",
+                        "result": "HiZ>m 6 1 2 1\r\nR2W (spd hiz)=( 0 0 )\r\nReady\r\n2WIRE>"
+                    }
+                ],
+                "partialReadWrite12": [
+                    {
+                        "command": "0xFFFF;12",
+                        "result": "2WIRE>0xFFFF;12\r\nWRITE: 0x0FFF;12 \r\n2WIRE>"
+                    }
+                ],
+                "sBasicScript_run": [
+                    {
+                        "command": "run",
+                        "result": "1-WIRE(BASIC)>run\r\nHELLO WORLD!\r\nHELLO AGAIN\r\n\r\nReady\r\n1-WIRE(BASIC)>"
+                    }
+                ],
+                "bootloaderReply": [
+                    {
+                        "command": "  ",
+                        "result": "BL4+BL4+BBL4"
+                    }
+                ],
+                "setupPPullupResistorsNoVpu": [
+                    {
+                        "command": "p",
+                        "result": "1-WIRE>p\r\nPull-up resistors OFF\r\n1-WIRE>"
+                    },
+                    {
+                        "command": "w",
+                        "result": "1-WIRE>w\r\nPower supplies OFF\r\n1-WIRE>"
+                    }
+                ],
+                "bitwiseClockToggle": [
+                    {
+                        "command": "/\\",
+                        "result": "2WIRE>/\\\r\nCLOCK, 1\r\nCLOCK, 0\r\n2WIRE>"
+                    }
+                ],
+                "pPullupResistorsVpuError": [
+                    {
+                        "command": "P",
+                        "result": "1-WIRE>P\r\nPull-up resistors ON\r\nWarning: no voltage on Vpullup pin\r\n1-WIRE>"
+                    }
+                ],
+                "clearMacroI2C": [
+                    {
+                        "command": "",
+                        "result": "I2C>[0xa1 r:8]\r\nWarning: *Short or no pull-up \r\nI2C START BIT\r\nWRITE: 0xA1 ACK \r\nREAD: 0x00  ACK 0x00  ACK 0x00  ACK 0x00  ACK 0x00  ACK 0x00  ACK 0x00  ACK 0x00 \r\nNACK\r\nI2C STOP BIT\r\nI2C>"
+                    },
+                    {
+                        "command": "",
+                        "result": "I2C>\r\nI2C>"
+                    },
+                    {
+                        "command": "m 1",
+                        "result": "I2C>m 1\r\nReady\r\nHiZ>"
+                    }
+                ],
+                "selfTest": [
+                    {
+                        "command": "~",
+                        "result": "HiZ>~\r\nDisconnect any devices\r\nConnect (Vpu to +5V) and (ADC to +3.3V)\r\nSpace to continue\r\n"
+                    }
+                ],
+                "wSuppliesReport": [
+                    {
+                        "command": "v",
+                        "result": "1-WIRE>v\r\nPinstates:\r\n1.(BR)\t2.(RD)\t3.(OR)\t4.(YW)\t5.(GN)\t6.(BL)\t7.(PU)\t8.(GR)\t9.(WT)\t0.(Blk)\r\nGND\t3.3V\t5.0V\tADC\tVPU\tAUX\t-\tOWD\t-\t-\r\nP\tP\tP\tI\tI\tI\tI\tI\tI\tI\t\r\nGND\t3.29V\t5.00V\t3.29V\t4.99V\tL\tL\tL\tL\tL\t\r\n1-WIRE>"
+                    }
+                ],
+                "macroRun": [
+                    {
+                        "command": "(1)",
+                        "result": "I2C>(1)\r\nSearching I2C address space. Found devices at:\r\nWarning: *Short or no pull-up \r\n\r\nI2C>"
+                    }
+                ],
+                "bitwiseClock": [
+                    {
+                        "command": "^",
+                        "result": "2WIRE>^\r\nCLOCK TICKS: 0x01\r\n2WIRE>"
+                    }
+                ],
+                "gFrequencyGenerator": [
+                    {
+                        "command": "g",
+                        "result": "1-WIRE>g\r\n1KHz-4,000KHz PWM\r\nFrequency in KHz \r\n(50)>"
+                    },
+                    {
+                        "command": "2000",
+                        "result": "(50)>2000\r\nDuty cycle in % \r\n(50)>"
+                    },
+                    {
+                        "command": "",
+                        "result": "(50)>\r\nPWM active\r\n1-WIRE>"
+                    },
+                    {
+                        "command": "g",
+                        "result": "1-WIRE>g\r\nPWM disabled\r\n1-WIRE>"
+                    }
+                ],
+                "hHistory": [],
+                "sBasicScript_setup_list": [
+                    {
+                        "command": "100 REM BASICDEMO",
+                        "result": "1-WIRE(BASIC)>100 REM BASICDEMO\r\n0x870x000x000x000x000x000x000x000x000x000x000x00Ready\r\n1-WIRE(BASIC)>"
+                    },
+                    {
+                        "command": "110 PRINT \"HELLO WORLD!\"",
+                        "result": "1-WIRE(BASIC)>110 PRINT \"HELLO WORLD!\"\r\n0x880x000x000x000x000x000x000x000x000x000x000x000x000x000x000x00Ready\r\n1-WIRE(BASIC)>"
+                    },
+                    {
+                        "command": "120 PRINT \"HELLO AGAIN\"",
+                        "result": "1-WIRE(BASIC)>120 PRINT \"HELLO AGAIN\"\r\n0x880x000x000x000x000x000x000x000x000x000x000x000x000x000x00Ready\r\n1-WIRE(BASIC)>"
+                    }
+                ],
+                "sServo": [
+                    {
+                        "command": "S",
+                        "result": "1-WIRE>S\r\nPosition in degrees\r\n\r\n(90)>"
+                    },
+                    {
+                        "command": "20",
+                        "result": "(90)>20\r\nServo active\r\n1-WIRE>"
+                    },
+                    {
+                        "command": "S",
+                        "result": "1-WIRE>S\r\nPWM disabled\r\n1-WIRE>"
+                    }
+                ],
+                "writeDECSPI": [
+                    {
+                        "command": "18",
+                        "result": "SPI>18\r\nWRITE: 0x12 \r\nSPI>"
+                    },
+                    {
+                        "command": "13:5",
+                        "result": "SPI>13:5\r\nWRITE: 0x0D 0x0D 0x0D 0x0D 0x0D \r\nSPI>"
+                    }
+                ],
+                "bitwiseDataToggle": [
+                    {
+                        "command": "-_",
+                        "result": "2WIRE>-_\r\nDATA OUTPUT, 1\r\nDATA OUTPUT, 0\r\n2WIRE>"
+                    }
+                ],
+                "PCsideSerialPort": [
+                    {
+                        "command": "b",
+                        "result": "I2C>b\r\nSet serial port speed: (bps)\r\n 1. 300\r\n 2. 1200\r\n 3. 2400\r\n 4. 4800\r\n 5. 9600\r\n 6. 19200\r\n 7. 38400\r\n 8. 57600\r\n 9. 115200\r\n10. BRG raw value\r\n\r\n(9)>"
+                    },
+                    {
+                        "command": "9",
+                        "result": "(9)>9\r\nAdjust your terminal\r\nSpace to continue\r\n"
+                    },
+                    {
+                        "command": " ",
+                        "result": "Space to continueI2C>\r\nI2C>"
+                    }
+                ],
+                "orReverseBits": [
+                    {
+                        "command": "|0b10101010",
+                        "result": "1-WIRE>|0b10101010\r\n0x55 = 85 = 0b01010101\r\n1-WIRE>"
+                    },
+                    {
+                        "command": "|0b10000000",
+                        "result": "1-WIRE>|0b10000000\r\n0x01 = 1 = 0b00000001\r\n1-WIRE>"
+                    },
+                    {
+                        "command": "|1",
+                        "result": "1-WIRE>|1\r\n0x80 = 128 = 0b10000000\r\n1-WIRE>"
+                    }
+                ],
+                "sBasicScript_list_program": [
+                    {
+                        "command": "list",
+                        "result": "1-WIRE(BASIC)>list\r\n\r\n100  REM  BASICDEMO\r\n110  PRINT \"HELLO WORLD!\"\r\n120  PRINT \"HELLO AGAIN\"\r\n65535  END \r\n52 bytes.\r\nReady\r\n1-WIRE(BASIC)>"
+                    }
+                ],
+                "macroList": [
+                    {
+                        "command": "(0)",
+                        "result": "I2C>(0)\r\n 0.Macro menu\r\n 1.7bit address search\r\n 2.I2C sniffer\r\nI2C>"
+                    }
+                ],
+                "setupReadStatus": [
+                    {
+                        "command": "W",
+                        "result": "1-WIRE>W\r\nPower supplies ON\r\n1-WIRE>"
+                    }
+                ],
+                "vPowerSuppliesReport": [
+                    {
+                        "command": "v",
+                        "result": "1-WIRE>v\r\nPinstates:\r\n1.(BR)\t2.(RD)\t3.(OR)\t4.(YW)\t5.(GN)\t6.(BL)\t7.(PU)\t8.(GR)\t9.(WT)\t0.(Blk)\r\nGND\t3.3V\t5.0V\tADC\tVPU\tAUX\t-\tOWD\t-\t-\r\nP\tP\tP\tI\tI\tI\tI\tI\tI\tI\t\r\nGND\t3.28V\t5.00V\t3.29V\t5.00V\tL\tL\tL\tL\tL\t\r\n1-WIRE>"
+                    }
+                ],
+                "PCsideSerialPortCustom": [
+                    {
+                        "command": "10",
+                        "result": "(9)>10\r\nEnter raw value for BRG\r\n\r\n(34)>"
+                    },
+                    {
+                        "command": "34",
+                        "result": "(34)>34\r\nAdjust your terminal\r\nSpace to continue\r\n"
+                    },
+                    {
+                        "command": " ",
+                        "result": "Space to continueI2C>\r\nI2C>"
+                    }
+                ],
+                "pPullupResistors": [
+                    {
+                        "command": "P",
+                        "result": "1-WIRE>P\r\nPull-up resistors ON\r\n1-WIRE>"
+                    },
+                    {
+                        "command": "p",
+                        "result": "1-WIRE>p\r\nPull-up resistors OFF\r\n1-WIRE>"
+                    }
+                ],
+                "runSelfTest": [
+                    {
+                        "command": " ",
+                        "result": "Space to continueCtrl\r\nAUX OK\r\nMODE LED OK\r\nPULLUP H OK\r\nPULLUP L OK\r\nVREG OK\r\nADC and supply\r\n5V(5.00) OK\r\nVPU(5.00) OK\r\n3.3V(3.28) OK\r\nADC(3.29) OK\r\nBus high\r\nMOSI OK\r\nCLK OK\r\nMISO OK\r\nCS OK\r\nBus Hi-Z 0\r\nMOSI OK\r\nCLK OK\r\nMISO OK\r\nCS OK\r\nBus Hi-Z 1\r\nMOSI OK\r\nCLK OK\r\nMISO OK\r\nCS OK\r\nMODE and VREG LEDs should be on!\r\nAny key to exit\r\nFound 0 errors.\r\nHiZ>"
+                    },
+                    {
+                        "command": " ",
+                        "result": "HiZ> \r\nHiZ>"
+                    }
+                ],
+                "bitwiseReadOneBit": [
+                    {
+                        "command": "!",
+                        "result": "2WIRE>!\r\nREAD BIT: 0  *pin is now HiZ\r\n2WIRE>"
+                    }
+                ],
+                "setupI2Cbusops": [
+                    {
+                        "command": "m ",
+                        "result": "1-WIRE>m \r\n1. HiZ\r\n2. 1-WIRE\r\n3. UART\r\n4. I2C\r\n5. SPI\r\n6. 2WIRE\r\n7. 3WIRE\r\n8. LCD\r\n9. DIO\r\nx. exit(without change)\r\n\r\n(1)>"
+                    },
+                    {
+                        "command": "5",
+                        "result": "(1)>5\r\nSet speed:\r\n 1. 30KHz\r\n 2. 125KHz\r\n 3. 250KHz\r\n 4. 1MHz\r\n\r\n(1)>"
+                    },
+                    {
+                        "command": "",
+                        "result": "(1)>\r\nClock polarity:\r\n 1. Idle low *default\r\n 2. Idle high\r\n\r\n(1)>"
+                    },
+                    {
+                        "command": "",
+                        "result": "(1)>\r\nOutput clock edge:\r\n 1. Idle to active\r\n 2. Active to idle *default\r\n\r\n(2)>"
+                    },
+                    {
+                        "command": "",
+                        "result": "(2)>\r\nInput sample phase:\r\n 1. Middle *default\r\n 2. End\r\n\r\n(1)>"
+                    },
+                    {
+                        "command": "",
+                        "result": "(1)>\r\nCS:\r\n 1. CS\r\n 2. /CS *default\r\n\r\n(2)>"
+                    },
+                    {
+                        "command": "",
+                        "result": "(2)>\r\nSelect output type:\r\n 1. Open drain (H=Hi-Z, L=GND)\r\n 2. Normal (H=3.3V, L=GND)\r\n\r\n(1)>"
+                    },
+                    {
+                        "command": "",
+                        "result": "(1)>\r\nReady\r\nSPI>"
+                    }
+                ],
+                "sBasicScript_list_empty": [
+                    {
+                        "command": "list",
+                        "result": "1-WIRE(BASIC)>list\r\n\r\n65535  END \r\n3 bytes.\r\nReady\r\n1-WIRE(BASIC)>"
+                    }
+                ],
+                "PCsideSerialPortCustom_setup": [
+                    {
+                        "command": "b",
+                        "result": "I2C>b\r\nSet serial port speed: (bps)\r\n 1. 300\r\n 2. 1200\r\n 3. 2400\r\n 4. 4800\r\n 5. 9600\r\n 6. 19200\r\n 7. 38400\r\n 8. 57600\r\n 9. 115200\r\n10. BRG raw value\r\n\r\n(9)>"
+                    }
+                ],
+                "wPowerSupplies": [
+                    {
+                        "command": "W",
+                        "result": "1-WIRE>W\r\nPower supplies ON\r\n1-WIRE>"
+                    },
+                    {
+                        "command": "w",
+                        "result": "1-WIRE>w\r\nPower supplies OFF\r\n1-WIRE>"
+                    }
+                ],
+                "CommandNotUsed": [
+                    {
+                        "command": "p",
+                        "result": "HiZ>p\r\nCommand not used in this mode\r\nHiZ>"
+                    }
+                ],
+                "sBasicScript_exit": [
+                    {
+                        "command": "exit",
+                        "result": "1-WIRE(BASIC)>exit\r\nReady\r\n1-WIRE>"
+                    }
+                ],
+                "lLSBMSB": [
+                    {
+                        "command": "l",
+                        "result": "2WIRE>l\r\nMSB set: MOST sig bit first\r\n2WIRE>"
+                    },
+                    {
+                        "command": "L",
+                        "result": "2WIRE>L\r\nLSB set: LEAST sig bit first\r\n2WIRE>"
+                    }
+                ],
+                "sBasicScript_new": [
+                    {
+                        "command": "new",
+                        "result": "1-WIRE(BASIC)>new\r\nReady\r\n1-WIRE(BASIC)>"
+                    }
+                ],
+                "fMeasureFrequency": [
+                    {
+                        "command": "f",
+                        "result": "1-WIRE>f\r\nAUX Frequency: "
+                    },
+                    {
+                        "command": "",
+                        "result": "AUX Frequency:  autorange "
+                    },
+                    {
+                        "command": "",
+                        "result": " autorange 0 Hz\r\n1-WIRE>"
+                    },
+                    {
+                        "command": "",
+                        "result": "1-WIRE>"
+                    }
+                ],
+                "busStart": [
+                    {
+                        "command": "[",
+                        "result": "I2C>[\r\nWarning: *Short or no pull-up \r\nI2C START BIT\r\nI2C>"
+                    }
+                ],
+                "eqConvertNumber": [
+                    {
+                        "command": "=0b110",
+                        "result": "1-WIRE>=0b110\r\n0x06 = 6 = 0b00000110\r\n1-WIRE>"
+                    },
+                    {
+                        "command": "=0xa",
+                        "result": "1-WIRE>=0xa\r\n0x0A = 10 = 0b00001010\r\n1-WIRE>"
+                    },
+                    {
+                        "command": "=12",
+                        "result": "1-WIRE>=12\r\n0x0C = 12 = 0b00001100\r\n1-WIRE>"
+                    }
+                ],
+                "userMacroRun": [
+                    {
+                        "command": "<1>",
+                        "result": "I2C><1>\r\n\r\nI2C>[0xa1 r:8]"
+                    }
+                ],
+                "cAUXToggle": [
+                    {
+                        "command": "c",
+                        "result": "1-WIRE>c\r\na/A/@ controls AUX pin\r\n1-WIRE>"
+                    },
+                    {
+                        "command": "C",
+                        "result": "1-WIRE>C\r\na/A/@ controls CS pin\r\n1-WIRE>"
+                    }
+                ],
+                "exitHistory": [],
+                "repeat": [
+                    {
+                        "command": "&:10",
+                        "result": "SPI>&:10\r\nDELAY 10us\r\nSPI>"
+                    },
+                    {
+                        "command": "r:0b10",
+                        "result": "SPI>r:0b10\r\nREAD: 0x00 0x00 \r\nSPI>"
+                    },
+                    {
+                        "command": "5:0x03",
+                        "result": "SPI>5:0x03\r\nWRITE: 0x05 0x05 0x05 \r\nSPI>"
+                    }
+                ],
+                "rReset": [
+                    {
+                        "command": "#",
+                        "result": "I2C>#\r\nRESET\r\n\r\nBus Pirate v3b\r\nFirmware v5.10 (r559)  Bootloader v4.4\r\nDEVID:0x0447 REVID:0x3046 (24FJ64GA002 B8)\r\nhttp://dangerousprototypes.com\r\nHiZ>"
+                    }
+                ],
+                "leaveMode": [
+                    {
+                        "command": "x",
+                        "result": "(1)>no mode change\r\nHiZ>\r\nHiZ>"
+                    }
+                ],
+                "partialReadWriteRepeat": [
+                    {
+                        "command": "0x55:4;2",
+                        "result": "2WIRE>0x55:4;2\r\nWRITE: 0x01;2 0x01;2 0x01;2 0x01;2 \r\n2WIRE>"
+                    }
+                ],
+                "busStop": [
+                    {
+                        "command": "]",
+                        "result": "SPI>]\r\n/CS DISABLED\r\nSPI>"
+                    }
+                ],
+                "ePullupSelect": [],
+                "bitwiseReadDataPin": [
+                    {
+                        "command": ".",
+                        "result": "2WIRE>.\r\nDATA STATE: 02WIRE>"
+                    }
+                ],
+                "mMode": [
+                    {
+                        "command": "m",
+                        "result": "HiZ>m\r\n1. HiZ\r\n2. 1-WIRE\r\n3. UART\r\n4. I2C\r\n5. SPI\r\n6. 2WIRE\r\n7. 3WIRE\r\n8. LCD\r\n9. DIO\r\nx. exit(without change)\r\n\r\n(1)>"
+                    }
+                ],
+                "dolJumpToBootloader": [
+                    {
+                        "command": "$",
+                        "result": "HiZ>$\r\nAre you sure? "
+                    },
+                    {
+                        "command": "y",
+                        "result": "Are you sure? y\r\nBOOTLOADER\r\nBL4+"
+                    }
+                ],
+                "setupPPullupNormal": [
+                    {
+                        "command": "m",
+                        "result": "1-WIRE>m\r\n1. HiZ\r\n2. 1-WIRE\r\n3. UART\r\n4. I2C\r\n5. SPI\r\n6. 2WIRE\r\n7. 3WIRE\r\n8. LCD\r\n9. DIO\r\nx. exit(without change)\r\n\r\n(1)>"
+                    },
+                    {
+                        "command": "6",
+                        "result": "(1)>6\r\nSet speed:\r\n 1. ~5KHz\r\n 2. ~50KHz\r\n 3. ~100KHz\r\n 4. ~400KHz\r\n\r\n(1)>"
+                    }
+                ],
+                "setupI2CforMacroTest": [
+                    {
+                        "command": "m 4 1",
+                        "result": "DATA STATE: 02WIRE>m 4 1\r\nI2C (mod spd)=( 0 0 )\r\nReady\r\nI2C>"
+                    }
+                ],
+                "writeASCIISPI": [
+                    {
+                        "command": "\"abc\"",
+                        "result": "SPI>\"abc\"\r\nWRITE: \"abc\"\r\nSPI>"
+                    }
+                ],
+                "writeHexSPI": [
+                    {
+                        "command": "0x15",
+                        "result": "SPI>0x15\r\nWRITE: 0x15 \r\nSPI>"
+                    },
+                    {
+                        "command": "0x15:5",
+                        "result": "SPI>0x15:5\r\nWRITE: 0x15 0x15 0x15 0x15 0x15 \r\nSPI>"
+                    }
+                ],
+                "setupdemomode": [
+                    {
+                        "command": "m 2",
+                        "result": "HiZ>m 2\r\n1WIRE routines (C) 2000 Michael Pearce GNU GPL\r\nReady\r\n1-WIRE>"
+                    }
+                ],
+                "delayusMS": [
+                    {
+                        "command": "&",
+                        "result": "SPI>&\r\nDELAY 1us\r\nSPI>"
+                    },
+                    {
+                        "command": "&:10",
+                        "result": "SPI>&:10\r\nDELAY 10us\r\nSPI>"
+                    },
+                    {
+                        "command": "%",
+                        "result": "SPI>%\r\nDELAY 1ms\r\nSPI>"
+                    },
+                    {
+                        "command": "%:7",
+                        "result": "SPI>%:7\r\nDELAY 7ms\r\nSPI>"
+                    }
+                ],
+                "userMacroAssign": [
+                    {
+                        "command": "<1=[0xa1 r:8]>",
+                        "result": "I2C><1=[0xa1 r:8]>\r\nI2C>"
+                    }
+                ],
+                "busRead": [
+                    {
+                        "command": "r",
+                        "result": "I2C>r\r\nREAD: 0x00 \r\nI2C>"
+                    },
+                    {
+                        "command": "r:3",
+                        "result": "I2C>r:3\r\nREAD:  ACK 0x00  ACK 0x00  ACK 0x00 \r\nI2C>"
+                    }
+                ],
+                "pPullupResistorWarnNormalPin": [
+                    {
+                        "command": "1",
+                        "result": "(1)>1\r\nSelect output type:\r\n 1. Open drain (H=Hi-Z, L=GND)\r\n 2. Normal (H=3.3V, L=GND)\r\n\r\n(1)>"
+                    },
+                    {
+                        "command": "2",
+                        "result": "(1)>2\r\nReady\r\n2WIRE>"
+                    },
+                    {
+                        "command": "P",
+                        "result": "2WIRE>P\r\nWARNING: pins not open drain (HiZ)\r\nPull-up resistors ON\r\nWarning: no voltage on Vpullup pin\r\n2WIRE>"
+                    }
+                ],
+                "cleanupStart": [
+                    {
+                        "command": "m",
+                        "result": "HiZ>m\r\n1. HiZ\r\n2. 1-WIRE\r\n3. UART\r\n4. I2C\r\n5. SPI\r\n6. 2WIRE\r\n7. 3WIRE\r\n8. LCD\r\n9. DIO\r\nx. exit(without change)\r\n\r\n(1)>"
+                    },
+                    {
+                        "command": "1",
+                        "result": "(1)>1\r\nReady\r\nHiZ>"
+                    }
+                ],
+                "setupPullupResistors": [
+                    {
+                        "command": "W",
+                        "result": "1-WIRE>W\r\nPower supplies ON\r\n1-WIRE>"
+                    }
+                ],
+                "setupI2C": [
+                    {
+                        "command": "m 4 1",
+                        "result": "SPI>m 4 1\r\nI2C (mod spd)=( 0 0 )\r\nReady\r\nI2C>"
+                    }
+                ]
+            },
+            "name": "BP_MANUAL",
+            "device": "BP_MANUAL"
+        }
+    },
+    "firmware": {
+        "version": "5.10",
+        "commit": "(r559)"
+    }
+}
