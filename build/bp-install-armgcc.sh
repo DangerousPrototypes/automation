@@ -31,26 +31,68 @@ nano /etc/environment
 # save and exit <ctrl + X>, Y
 # NOTE: log out and log in again for the PATH to take effect
 
-
+##########################
 # Clone Bus Pirate NG repo
+##########################
+
+#arm development directory for our projects
 cd ~
 mkdir armdev 
 cd armdev 
-git clone https://github.com/DangerousPrototypes/bus_pirate_ng.git
+
+##########################
+#
+#	YOU HAVE CHOICES!!!
+#
+#	The 'Sjaak' method uses a single command 
+#	to pull the Bus Pirate source, libopencm3 source, 
+#	and set libopencm3 to the right commit.
+#
+#	The 'Ian' method does each step individually
+#
+#	ONLY CHOOSE ONE!
+#
+##########################
+
+##########################
+#
+# 	Sjaak method, one command
+#
+##########################
+git clone –recursive https://github.com/DangerousPrototypes/bus_pirate_ng
+
+cd bus_pirate_ng/libopencm3 
+##########################
+#
+# 	END SJAAK METHOD
+#
+##########################
+
+##########################
+#
+# 	Ian method, discrete commands
+#
+##########################
+#git clone https://github.com/DangerousPrototypes/bus_pirate_ng.git
 
 # Clone libopencm3 inside of bus_pirate_ng repo
-cd bus_pirate_ng
-git clone git://github.com/libopencm3/libopencm3.git 
+#cd bus_pirate_ng
+#git clone git://github.com/libopencm3/libopencm3.git 
 
 # Switch to working commit for our project (953bf53) because later versions break compatibility
-cd bus_pirate_ng/libopencm3 
-git checkout 953bf53
+#cd libopencm3 
+#git checkout 953bf53
+##########################
+#
+# 	END IAN METHOD
+#
+##########################
 
 # Build libopencm3 libraries
+cd ~/armdev/bus_pirate_ng/libopencm3
 make
 
 # Test compile
-# These commands are normally run by the automated compile script
 cd ~/armdev/bus_pirate_ng/source
 make clean
 make

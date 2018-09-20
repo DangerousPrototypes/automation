@@ -1,3 +1,38 @@
+############################################
+# 	A script to check git for new commits, 
+#	run make, package up the output
+#	and POST to an HTML form.
+#
+#	More docs:
+#		http://dangerousprototypes.com
+#		https://github.com/DangerousPrototypes/automation
+#
+#	Used at:
+#		http://buspirate.com/firmware/builds
+#
+#
+#	Output is a JSON file, here's some of the key variables:
+#
+# 	'error'
+# 		0 if make executed, 1 if make returned system error (build failed with errors).
+# 	'timestamp'
+# 		start/stop build timestamp
+# 	'firmware'/'hardware'
+# 		Identifying info
+# 	'starthashlong'/'endhashlong'
+# 		Commit hash before/after 'git pull' command
+# 	'gitoutput'
+# 		Output from the 'git pull' command
+# 	'makeoutput'
+# 		Output from the 'make' command
+# 	'apikey'
+# 		Identifying info
+# 	'firmware_type'
+# 		The file extension of the firmware. Added to automate naming in the backend. PIC uses .HEX, ARM uses .BIN
+# 	'base64encbin'
+# 		Base 64 encoded firmware file
+#
+##############################################
 import sys
 import subprocess
 import json

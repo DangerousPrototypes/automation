@@ -1,3 +1,23 @@
+# Add build jobs to the tasks configuration file:
+#
+# 'hardware'/'firmware':
+# 	Hardware/Firmware version id. This is returned in the result json as 'hardware'/'firmware'. Used to support multiple builds, use as needed.
+#
+# 'work_dir':
+#	Where to execute git and make commands. '/root/armdev/bus_pirate_ng/source' or '/root/picdev/Bus_Pirate/Firmware/busPirate3X.X'
+#
+# 'make_command':
+#	Make command for this task. For example 'make bin' (ARM) or 'make' (PIC)
+#
+# 'output_dir':
+#	Firmware output directory. For example '/root/armdev/bus_pirate_ng/source' or '/root/picdev/Bus_Pirate/Firmware/busPirate3X.X/dist/default/production'
+#
+# 'output_file':
+#	Name of firmware file in output_dir. For example 'buspirateNG.bin' or 'busPirate3X.X.production.hex'
+#
+# 'api_url','api_key':
+#	URL to POST results JSON file. 'api_key' is included for authentication. Backend stuff depends on your implementation.
+
 tasks=[
 	#
 	# Each TASK runs git pull, then executes one or more BUILDS
