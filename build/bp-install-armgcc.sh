@@ -59,7 +59,7 @@ cd armdev
 # 	Sjaak method, one command
 #
 ##########################
-git clone –recursive https://github.com/DangerousPrototypes/bus_pirate_ng
+git clone --recursive https://github.com/DangerousPrototypes/bus_pirate_ng
 
 cd bus_pirate_ng/libopencm3 
 ##########################

@@ -7,11 +7,12 @@
 # Tested under Ubuntu 18.10 64bit
 # NOTE: add a swap if using a tiny node (digital ocean, vultr, etc) or the compile will run out of memory
 # swapon --show #should be empty
-# fallocate -l 1G /swapfile #4G, etc
+# fallocate -l 4G /swapfile #4G, etc
 # chmod 600 /swapfile
 # mkswap /swapfile
 # swapon /swapfile
-# nano /etc/fstab #/swapfile swap swap defaults 0 0
+# fallocate -l 4G /swapfile && chmod 600 /swapfile && mkswap /swapfile && swapon /swapfile
+# nano /etc/fstab #ADD: "/swapfile swap swap defaults 0 0"
 cd ~
 
 # Update apt-get repositories
