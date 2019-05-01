@@ -160,7 +160,7 @@ class autoBuild:
 		
 	def git_clone(self,branch_path,git_url):
 		self.logger("Cloning repo: "+git_url)
-		return self.command('cd '+branch_path+" && git clone "+git_url+" .","Problem cloning repository!")
+		return self.command('cd '+branch_path+" && git clone --recursive "+git_url+" .","Problem cloning repository!")
 		
 	def git_checkout(self, branch_path, git_branch):
 		self.logger("Checking out branch: "+git_branch)
@@ -253,9 +253,7 @@ class autoBuild:
 		result['timestamp']={}
 		result['timestamp']['start']=timestampstart
 		result['timestamp']['stop']=time.time()
-		result['build_id']=build['build_id']
-		result['firmware']=build['firmware']
-		result['hardware']=build['hardware']
+		result['autobuild_id']=build['autobuild_id']
 		result['starthashshort']=hashshort
 		result['starthashlong']=hashlong
 		result['endhashshort']=newhashshort
@@ -264,7 +262,6 @@ class autoBuild:
 		result['makeoutput']=makeoutput
 		result['apikey']=build['api_key']
 		result['response']='json'
-		result['firmware_type']=build['output_extension']	
 
 		#base64 encode file
 		firmware_path=output_path + '/' + build['output_file']
