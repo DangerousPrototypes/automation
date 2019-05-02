@@ -11,17 +11,15 @@
 #		http://buspirate.com/firmware/builds
 #
 #	Input is a JSON feed from an API.  It is something like this:
-# tasks	[ 		#an array of tasks
-#	branch_id=1	#this number is a unique brach of a git repo and will be checked out into a folder named "1"
-#	repo_id=1	#identifying info for backend, customize, will be POSTed to the API	
-#	git_pull_dir	"source" #folder to run git pull command
-#	git_branch	"master"	#git branch to check out
+# tasks	=[ 		#an array of tasks
+#	branch_id=1	#this is a unique ID number for the branch (from our database), the branch will be cloned into a folder named "1"
+#	git_pull_dir="source" #folder to run git pull command
+#	git_branch="master"	#git branch to check out
 #	pre_install_script	=""	#\n terminated list of commands to run BEFORE cloning the repo # and blank lines ignored
 #	post_install_script=""	#\n terminated list of commands to run AFTER cloning the repo # and blank lines ignored
 #	git_url	="https://github.com/DangerousPrototypes/Bus_Pirate.git" #url for the remote repo
-#	builds [	
+#	builds =[	#an array of builds to run on this branch
 # 		autobuild_id	=1 #unique id of this build. will be POSTed to the API
-# 		branch_id	=1		#same as above
 # 		work_dir	="source" #where to run make
 # 		make_command	="make bin" #the make command
 # 		output_dir	="source" #where to find the compiled files
