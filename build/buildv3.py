@@ -10,6 +10,31 @@
 #	Used at:
 #		http://buspirate.com/firmware/builds
 #
+#	Input is a JSON feed from an API.  It is something like this:
+# tasks	[ 		#an array of tasks
+#	branch_id=1	#this number is a unique brach of a git repo and will be checked out into a folder named "1"
+#	repo_id=1	#identifying info for backend, customize, will be POSTed to the API	
+#	git_pull_dir	"source" #folder to run git pull command
+#	git_branch	"master"	#git branch to check out
+#	pre_install_script	=""	#\n terminated list of commands to run BEFORE cloning the repo # and blank lines ignored
+#	post_install_script=""	#\n terminated list of commands to run AFTER cloning the repo # and blank lines ignored
+#	git_url	="https://github.com/DangerousPrototypes/Bus_Pirate.git" #url for the remote repo
+#	builds [	
+# 		autobuild_id	=1 #unique id of this build. will be POSTed to the API
+# 		branch_id	=1		#same as above
+# 		work_dir	="source" #where to run make
+# 		make_command	="make bin" #the make command
+# 		output_dir	="source" #where to find the compiled files
+# 		output_file	="buspirateNG.bin" #compiled file to POST to api
+# 		api_url	="http://site.com/api/build" #url of the API to POST the build results
+# 		api_key	="" #reference info, key to API. will be posted back to API as api_key variable
+# 		],
+#		[
+#		another build
+#		]
+#	[
+#	another task
+#	]
 #
 #	Output is a JSON file, here's some of the key variables:
 #
@@ -17,8 +42,6 @@
 # 		0 if make executed, 1 if make returned system error (build failed with errors).
 # 	'timestamp'
 # 		start/stop build timestamp
-# 	'firmware'/'hardware'
-# 		Identifying info
 # 	'starthashlong'/'endhashlong'
 # 		Commit hash before/after 'git pull' command
 # 	'gitoutput'
@@ -27,8 +50,6 @@
 # 		Output from the 'make' command
 # 	'apikey'
 # 		Identifying info
-# 	'firmware_type'
-# 		The file extension of the firmware. Added to automate naming in the backend. PIC uses .HEX, ARM uses .BIN
 # 	'base64encbin'
 # 		Base 64 encoded firmware file
 #
@@ -239,15 +260,16 @@ class autoBuild:
 		timestampstart=time.time()
 		self.make_clean(work_path)
 		try:
-			makeoutput=subprocess.check_output('cd '+work_path+' && '+build['make_command'], shell=True,stderr=subprocess.STDOUT).decode()
 			result['error']='0';
+			command='cd '+work_path+' && '+build['make_command']
+			self.logger(command)
+			makeoutput=subprocess.check_output(command, shell=True,stderr=subprocess.STDOUT).decode()
+			self.logger(makeoutput)
 		except subprocess.CalledProcessError as e:
-			#print("command '"+e.cmd+"' return with error (code "+e.returncode.decode()+"): "+e.output)	
-			pprint(e.returncode)
-			#pprint(stderr)
-			makeoutput=str(e.output.decode())
 			result['error']='1'
-			pprint(makeoutput)
+			self.logger(e.returncode)
+			makeoutput=str(e.output.decode())
+			self.logger(makeoutput)
 
 		#create data structure
 		result['timestamp']={}

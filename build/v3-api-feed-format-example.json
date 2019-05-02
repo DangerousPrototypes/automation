@@ -1,0 +1,97 @@
+{
+  "status": "ok",
+  "tasks": [
+    {
+      "branch_id": 1,
+      "repo_id": 1,
+      "git_pull_dir": "source",
+      "git_branch": "master",
+      "pre_install_script": "",
+      "post_install_script": "",
+      "description": "Bus Pirate NG github",
+      "git_url": "https://github.com/DangerousPrototypes/bus_pirate_ng.git",
+      "builds": [
+        {
+          "autobuild_id": 1,
+          "branch_id": 1,
+          "hardware_id": 1,
+          "description": "NG1 firmware",
+          "work_dir": "source",
+          "make_command": "make bin",
+          "output_dir": "source",
+          "output_file": "buspirateNG.bin",
+          "output_extension": "bin",
+          "api_url": "http://site.com/api/build",
+          "api_key": "",
+          "active": 1
+        }
+      ]
+    },
+    {
+      "branch_id": 2,
+      "repo_id": 2,
+      "git_pull_dir": "",
+      "git_branch": "firmware_v8_official",
+      "pre_install_script": "",
+      "post_install_script": "# Create correctly formatted make files from the MPLABX project file\r\n# Do for all projects before compiling\r\n# The location of the prjMakefilesGenerator.sh changes frequently. You may need to hunt for it.\r\ncd Firmware/busPirate3X.X && /opt/microchip/mplabx/v5.15/mplab_platform/bin/prjMakefilesGenerator.sh .\r\n\r\ncd Firmware/busPirate4X.X && /opt/microchip/mplabx/v5.15/mplab_platform/bin/prjMakefilesGenerator.sh .\r\n\r\ncd Firmware/busPirate5X.X && /opt/microchip/mplabx/v5.15/mplab_platform/bin/prjMakefilesGenerator.sh .",
+      "description": "Bus Pirate v3/4/5 github",
+      "git_url": "https://github.com/DangerousPrototypes/Bus_Pirate.git",
+      "builds": [
+        {
+          "autobuild_id": 2,
+          "branch_id": 2,
+          "hardware_id": 4,
+          "description": "v3 firmware",
+          "work_dir": "Firmware/busPirate3X.X",
+          "make_command": "make",
+          "output_dir": "Firmware/busPirate3X.X/dist/default/production",
+          "output_file": "busPirate3X.X.production.hex",
+          "output_extension": "hex",
+          "api_url": "http://site.com/api/build",
+          "api_key": "",
+          "active": 1
+        },
+        {
+          "autobuild_id": 4,
+          "branch_id": 2,
+          "hardware_id": 2,
+          "description": "v5 firmware",
+          "work_dir": "Firmware/busPirate5X.X",
+          "make_command": "make",
+          "output_dir": "Firmware/busPirate5X.X/dist/default/production",
+          "output_file": "busPirate5X.X.production.hex",
+          "output_extension": "hex",
+          "api_url": "http://site.com/api/build",
+          "api_key": "",
+          "active": 1
+        }
+      ]
+    },
+    {
+      "branch_id": 5,
+      "repo_id": 3,
+      "git_pull_dir": "",
+      "git_branch": "master",
+      "pre_install_script": "",
+      "post_install_script": "",
+      "description": "Bus Pirate Ultra",
+      "git_url": "https://github.com/DangerousPrototypes/Bus_Pirate_Ultra.git",
+      "builds": [
+        {
+          "autobuild_id": 7,
+          "branch_id": 5,
+          "hardware_id": 5,
+          "description": "icestorm blink example",
+          "work_dir": "hdl/blink",
+          "make_command": "make",
+          "output_dir": "hdl/blink",
+          "output_file": "example.bin",
+          "output_extension": "bin",
+          "api_url": "http://site.com/api/build",
+          "api_key": "",
+          "active": 1
+        }
+      ]
+    }
+  ]
+}
